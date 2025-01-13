@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JGame.js Documentation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>JGame.js Documentation</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#getting-started">Getting Started</a></li>
+                    <li><a href="#beginners">Beginners</a></li>
+                    <li><a href="#classes-and-methods">Classes and Methods</a></li>
+                    <li><a href="#examples">Examples</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#intermediate">Intermediate</a></li>
+                    <li><a href="#advanced">Advanced</a></li>
+                    <li><a href="#game-examples">Game Examples</a></li>
+                </ul>
+            </nav>
+            
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="introduction">
+            <h2>1. Introduction</h2>
+            <p>Welcome to the JGame.js documentation! This guide will help you understand how to use the JGame.js game engine to create your own 2D games.</p>
+        </section>
+
+        <section id="getting-started">
+            <h2>2. Getting Started</h2>
+            <p>To get started with JGame.js, include the following scripts in your HTML file:</p>
+            <pre><code>&lt;script src="/jgme/jgame.js"&gt;&lt;/script&gt;
+&lt;script src="/jgme/jgame_more.js"&gt;&lt;/script&gt;</code></pre>
+        </section>
+
+        <section id="classes-and-methods">
+            <h2>3. Classes and Methods</h2>
+            <h3>Display Class</h3>
+            <p>The <code>Display</code> class is responsible for creating and managing the game canvas.</p>
+            <h4>Methods:</h4>
+            <ul>
+                <li><code>start(width, height)</code>: Initializes the canvas with the specified width and height.</li>
+                <li><code>addEventListeners()</code>: Adds event listeners for keyboard and mouse input.</li>
+                <li><code>clear()</code>: Clears the canvas.</li>
+                <li><code>borderStyle(borderStyle)</code>: Sets the canvas border style.</li>
+                <li><code>stop()</code>: Stops the game loop.</li>
+                <li><code>borderSize(borderSize)</code>: Sets the canvas border size.</li>
+                <li><code>backgroundColor(color)</code>: Sets the canvas background color.</li>
+                <li><code>borderColor(color)</code>: Sets the canvas border color.</li>
+                <li><code>fontColor(color)</code>: Sets the canvas font color.</li>
+                <li><code>scale(width, height)</code>: Scales the canvas dimensions.</li>
+                <li><code>add(component)</code>: Adds a component to the display.</li>
+                <li><code>update()</code>: Updates the display and components.</li>
+            </ul>
+
+            <h3>Component Class</h3>
+            <p>The <code>Component</code> class represents game objects.</p>
+            <h4>Methods:</h4>
+            <ul>
+                <li><code>update(ctx)</code>: Updates the component's appearance.</li>
+                <li><code>move()</code>: Moves the component based on its speed and physics.</li>
+                <li><code>hitBottom()</code>: Checks if the component hits the bottom of the canvas.</li>
+                <li><code>stopMove()</code>: Stops the component's movement.</li>
+                <li><code>clicked()</code>: Checks if the component is clicked.</li>
+                <li><code>crashWith(otherobj)</code>: Checks if the component crashes with another object.</li>
+            </ul>
+
+            <h3>Sound Class</h3>
+            <p>The <code>Sound</code> class handles audio playback.</p>
+            <h4>Methods:</h4>
+            <ul>
+                <li><code>play()</code>: Plays the sound.</li>
+                <li><code>stop()</code>: Stops the sound.</li>
+            </ul>
+
+            <h3>Move Class</h3>
+            <p>The <code>Move</code> class contains various movement and transformation methods.</p>
+            <h4>Methods:</h4>
+            <ul>
+                <li><code>backward(id, steps)</code>: Moves the component backward.</li>
+                <li><code>teleport(id, x, y)</code>: Teleports the component to the specified coordinates.</li>
+                <li><code>setX(id, x)</code>: Sets the component's x-coordinate.</li>
+                <li><code>setY(id, y)</code>: Sets the component's y-coordinate.</li>
+                <li><code>stamp(id)</code>: Creates a stamped copy of the component.</li>
+                <li><code>circle(id, speed)</code>: Moves the component in a circular path.</li>
+                <li><code>dot(id)</code>: Draws a dot at the component's position.</li>
+                <li><code>clearStamp(id)</code>: Clears the stamped component.</li>
+                <li><code>turnLeft(id, steps)</code>: Rotates the component to the left.</li>
+                <li><code>turnRight(id, steps)</code>: Rotates the component to the right.</li>
+                <li><code>bound(id)</code>: Keeps the component within the canvas bounds.</li>
+                <li><code>hitObject(id, otherid)</code>: Checks if the component hits another object.</li>
+                <li><code>glideX(id, t, x)</code>: Glides the component horizontally.</li>
+                <li><code>glideY(id, t, y)</code>: Glides the component vertically.</li>
+                <li><code>glideTo(id, t, x, y)</code>: Glides the component to the specified coordinates.</li>
+                <li><code>project(id, initialVelocity, angle, gravity)</code>: Projects the component into the air.</li>
+                <li><code>pointTo(id, targetX, targetY)</code>: Points the component towards the specified coordinates.</li>
+            </ul>
+
+            <h3>State Class</h3>
+            <p>The <code>State</code> class contains methods for retrieving the state of components.</p>
+            <h4>Methods:</h4>
+            <ul>
+                <li><code>distance(id, otherid)</code>: Calculates the distance between two components.</li>
+                <li><code>rect(id)</code>: Returns the component's rectangle (x, y, width, height).</li>
+                <li><code>physics(id)</code>: Returns whether the component has physics enabled.</li>
+                <li><code>changeAngle(id)</code>: Returns whether the component's angle changes.</li>
+                <li><code>angle(id)</code>: Returns the component's angle.</li>
+                <li><code>pos(id)</code>: Returns the component's position as a string.</li>
+            </ul>
+        </section>
+
+        <section id="examples">
+            <h2>4. Examples</h2>
+            <p>Here are some examples to help you get started:</p>
+
+            <h3>Creating a Display:</h3>
+            <pre><code>const display = new Display();
+display.start(800, 600);
+display.borderStyle("solid");
+display.borderColor("black");</code></pre>
+
+            <h3>Adding a Component:</h3>
+            <pre><code>const component = new Component(50, 50, "red", 100, 100, "rectangle");
+display.add(component);</code></pre>
+
+            <h3>Moving a Component:</h3>
+            <pre><code>move.glideTo(component, 3, 400, 300);</code></pre>
+
+            <h3>Playing a Sound:</h3>
+            <pre><code>const sound = new Sound("path/to/sound.mp3");
+sound.play();</code></pre>
+
+            <h3>Checking for Collision:</h3>
+            <pre><code>const component1 = new Component(50, 50, "blue", 200, 200, "rectangle");
+const component2 = new Component(50, 50, "green", 250, 250, "rectangle");
+display.add(component1);
+display.add(component2);
+
+if (move.checkCollision(component1, component2)) {
+    console.log("Collision detected!");
+}</code></pre>
+
+            <h3>Animating a Sprite:</h3>
+            <pre><code>const spriteImage = new Image();
+spriteImage.src = "path/to/sprite.png";
+const sprite = new Sprite(spriteImage, 64, 64, 4, 10);
+
+function update() {
+    sprite.update();
+    sprite.draw(display.context, 100, 100);
+}
+
+display.add({ update });</code></pre>
+        </section>
+        <section id="beginners">
+            <h2>3. Beginners</h2>
+            <p>If you're new to game development, this section will guide you through the basics of using JGame.js.</p>
+        
+            <h3>Setting Up Your Project</h3>
+            <p>First, create a new HTML file and include the JGame.js scripts:</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+        &lt;html lang="en"&gt;
+        &lt;head&gt;
+            &lt;meta charset="UTF-8"&gt;
+            &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+            &lt;title&gt;My First Game&lt;/title&gt;
+            &lt;script src="/jgme/jgame.js"&gt;&lt;/script&gt;
+            &lt;script src="/jgme/jgame_more.js"&gt;&lt;/script&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;script&gt;
+                // Your game code will go here
+            &lt;/script&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;</code></pre>
+        
+            <h3>Creating a Display</h3>
+            <p>Next, create a display for your game:</p>
+            <pre><code>const display = new Display();
+        display.start(800, 600);
+        display.borderStyle("solid");
+        display.borderColor("black");</code></pre>
+        
+            <h3>Adding a Component</h3>
+            <p>Now, add a component to the display:</p>
+            <pre><code>const component = new Component(50, 50, "red", 100, 100, "rectangle");
+        display.add(component);</code></pre>
+        
+            <h3>Moving a Component</h3>
+            <p>To move the component, use the following code:</p>
+            <pre><code>move.glideTo(component, 3, 400, 300);</code></pre>
+        
+            <h3>Running Your Game</h3>
+            <p>Finally, create an update function to run your game:</p>
+            <pre><code>function update() {
+            // Update your game logic here
+        }
+        
+        display.update = update;</code></pre>
+        
+            <h3>Example 1: Changing Background Color</h3>
+            <p>Change the background color of the canvas:</p>
+            <pre><code>display.backgroundColor("lightblue");</code></pre>
+        
+            <h3>Example 2: Adding Multiple Components</h3>
+            <p>Add multiple components to the display:</p>
+            <pre><code>const component1 = new Component(50, 50, "blue", 200, 200, "rectangle");
+        const component2 = new Component(50, 50, "green", 300, 300, "rectangle");
+        display.add(component1);
+        display.add(component2);</code></pre>
+        
+            <h3>Example 3: Moving Components Independently</h3>
+            <p>Move multiple components independently:</p>
+            <pre><code>move.glideTo(component1, 3, 400, 300);
+        move.glideTo(component2, 3, 100, 100);</code></pre>
+        
+            <h3>Example 4: Rotating a Component</h3>
+            <p>Rotate a component to a specific angle:</p>
+            <pre><code>move.turnRight(component, 45);</code></pre>
+        
+            <h3>Example 5: Adding a Click Event</h3>
+            <p>Add a click event to a component:</p>
+            <pre><code>component.clicked = function() {
+            alert("Component clicked!");
+        };</code></pre>
+        
+            <h3>Example 6: Playing a Sound</h3>
+            <p>Play a sound when a component is clicked:</p>
+            <pre><code>const sound = new Sound("path/to/sound.mp3");
+        component.clicked = function() {
+            sound.play();
+        };</code></pre>
+        
+            <h3>Example 7: Checking for Collisions</h3>
+            <p>Check for collisions between two components:</p>
+            <pre><code>if (move.checkCollision(component1, component2)) {
+            console.log("Collision detected!");
+        }</code></pre>
+        </section>
+        <section id="intermediate">
+            <h2>4. Intermediate</h2>
+            <p>This section is for those who have a basic understanding of JGame.js and want to explore more advanced features and techniques.</p>
+        
+            <h3>Example 1: Creating a Custom Component</h3>
+            <p>Create a custom component with additional properties and methods:</p>
+            <pre><code>class CustomComponent extends Component {
+            constructor(width, height, color, x, y, type) {
+                super(width, height, color, x, y, type);
+                this.customProperty = "value";
+            }
+        
+            customMethod() {
+                console.log("Custom method called!");
+            }
+        
+            update(ctx) {
+                super.update(ctx);
+                // Add custom rendering logic here
+            }
+        }
+        
+        const customComponent = new CustomComponent(50, 50, "purple", 150, 150, "rectangle");
+        display.add(customComponent);
+        customComponent.customMethod();</code></pre>
+        
+            <h3>Example 2: Implementing Gravity</h3>
+            <p>Add gravity to a component to simulate falling:</p>
+            <pre><code>component.gravity = 0.1;
+        component.gravitySpeed = 0;
+        
+        function update() {
+            component.gravitySpeed += component.gravity;
+            component.y += component.gravitySpeed;
+            component.hitBottom();
+        }
+        
+        display.update = update;</code></pre>
+        
+            <h3>Example 3: Creating a Simple Animation</h3>
+            <p>Animate a component by changing its properties over time:</p>
+            <pre><code>let angle = 0;
+        
+        function update() {
+            angle += 1;
+            component.x = 100 + 50 * Math.cos(angle * Math.PI / 180);
+            component.y = 100 + 50 * Math.sin(angle * Math.PI / 180);
+        }
+        
+        display.update = update;</code></pre>
+        
+            <h3>Example 4: Handling Keyboard Input</h3>
+            <p>Move a component using keyboard input:</p>
+            <pre><code>window.addEventListener("keydown", function(e) {
+            switch (e.key) {
+                case "ArrowUp":
+                    component.y -= 5;
+                    break;
+                case "ArrowDown":
+                    component.y += 5;
+                    break;
+                case "ArrowLeft":
+                    component.x -= 5;
+                    break;
+                case "ArrowRight":
+                    component.x += 5;
+                    break;
+            }
+        });</code></pre>
+        
+            <h3>Example 5: Creating a Particle System</h3>
+            <p>Create a simple particle system for effects like explosions:</p>
+            <pre><code>class Particle extends Component {
+            constructor(x, y) {
+                super(5, 5, "yellow", x, y, "rectangle");
+                this.speedX = Math.random() * 2 - 1;
+                this.speedY = Math.random() * 2 - 1;
+                this.life = 100;
+            }
+        
+            update(ctx) {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.life -= 1;
+                if (this.life <= 0) {
+                    display.comm.splice(display.comm.indexOf(this), 1);
+                }
+                super.update(ctx);
+            }
+        }
+        
+        function createExplosion(x, y) {
+            for (let i = 0; i < 50; i++) {
+                const particle = new Particle(x, y);
+                display.add(particle);
+            }
+        }
+        
+        createExplosion(200, 200);</code></pre>
+        
+            <h3>Example 6: Implementing Collision Detection</h3>
+            <p>Detect and respond to collisions between components:</p>
+            <pre><code>function update() {
+            if (move.checkCollision(component1, component2)) {
+                component1.color = "red";
+                component2.color = "red";
+            } else {
+                component1.color = "blue";
+                component2.color = "green";
+            }
+        }
+        
+        display.update = update;</code></pre>
+        
+            <h3>Example 7: Creating a Simple Game Loop</h3>
+            <p>Implement a basic game loop to update and render your game:</p>
+            <pre><code>function gameLoop() {
+            display.clear();
+            update();
+            display.comm.forEach(component => component.update(display.context));
+            requestAnimationFrame(gameLoop);
+        }
+        
+        gameLoop();</code></pre>
+        </section>
+        <section id="advanced">
+            <h2>5. Advanced</h2>
+            <p>This section is for those who have a solid understanding of JGame.js and want to explore more advanced features and techniques.</p>
+        
+            <h3>Example 1: Implementing a Physics Engine</h3>
+            <p>Integrate a basic physics engine for realistic movement and collisions:</p>
+            <pre><code>class PhysicsComponent extends Component {
+            constructor(width, height, color, x, y, type) {
+                super(width, height, color, x, y, type);
+                this.velocityX = 0;
+                this.velocityY = 0;
+                this.accelerationX = 0;
+                this.accelerationY = 0;
+            }
+        
+            update(ctx) {
+                this.velocityX += this.accelerationX;
+                this.velocityY += this.accelerationY;
+                this.x += this.velocityX;
+                this.y += this.velocityY;
+                super.update(ctx);
+            }
+        }
+        
+        const physicsComponent = new PhysicsComponent(50, 50, "orange", 100, 100, "rectangle");
+        physicsComponent.accelerationY = 0.1; // Gravity
+        display.add(physicsComponent);</code></pre>
+        
+            <h3>Example 2: Creating a Tile-Based Map</h3>
+            <p>Implement a tile-based map for your game:</p>
+            <pre><code>const tileSize = 32;
+        const map = [
+            [0, 1, 0, 0, 0],
+            [0, 1, 0, 1, 0],
+            [0, 0, 0, 1, 0],
+            [1, 1, 0, 1, 0],
+            [0, 0, 0, 0, 0]
+        ];
+        
+        function drawMap() {
+            for (let row = 0; row < map.length; row++) {
+                for (let col = 0; col < map[row].length; col++) {
+                    if (map[row][col] === 1) {
+                        const tile = new Component(tileSize, tileSize, "gray", col * tileSize, row * tileSize, "rectangle");
+                        display.add(tile);
+                    }
+                }
+            }
+        }
+        
+        drawMap();</code></pre>
+        
+            <h3>Example 3: Implementing Pathfinding</h3>
+            <p>Add pathfinding to navigate complex environments:</p>
+            <pre><code>function findPath(start, goal) {
+            const openSet = [start];
+            const cameFrom = new Map();
+            const gScore = new Map();
+            const fScore = new Map();
+        
+            gScore.set(start, 0);
+            fScore.set(start, heuristic(start, goal));
+        
+            while (openSet.length > 0) {
+                let current = openSet.reduce((a, b) => fScore.get(a) < fScore.get(b) ? a : b);
+        
+                if (current === goal) {
+                    return reconstructPath(cameFrom, current);
+                }
+        
+                openSet.splice(openSet.indexOf(current), 1);
+        
+                for (let neighbor of getNeighbors(current)) {
+                    let tentativeGScore = gScore.get(current) + distance(current, neighbor);
+        
+                    if (tentativeGScore < (gScore.get(neighbor) || Infinity)) {
+                        cameFrom.set(neighbor, current);
+                        gScore.set(neighbor, tentativeGScore);
+                        fScore.set(neighbor, gScore.get(neighbor) + heuristic(neighbor, goal));
+        
+                        if (!openSet.includes(neighbor)) {
+                            openSet.push(neighbor);
+                        }
+                    }
+                }
+            }
+        
+            return null;
+        }
+        
+        function heuristic(a, b) {
+            return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
+        }
+        
+        function reconstructPath(cameFrom, current) {
+            const path = [current];
+            while (cameFrom.has(current)) {
+                current = cameFrom.get(current);
+                path.unshift(current);
+            }
+            return path;
+        }
+        
+        function getNeighbors(node) {
+            // Implement this function to return the neighbors of a node
+        }
+        
+        function distance(a, b) {
+            return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
+        }</code></pre>
+        
+            <h3>Example 4: Creating a Game Menu</h3>
+            <p>Implement a simple game menu with buttons:</p>
+            <pre><code>class Button extends Component {
+            constructor(width, height, color, x, y, text) {
+                super(width, height, color, x, y, "rectangle");
+                this.text = text;
+            }
+        
+            update(ctx) {
+                super.update(ctx);
+                ctx.fillStyle = "black";
+                ctx.font = "20px Arial";
+                ctx.fillText(this.text, this.x + 10, this.y + 30);
+            }
+        
+            clicked() {
+                alert(this.text + " button clicked!");
+            }
+        }
+        
+        const startButton = new Button(100, 50, "lightgreen", 150, 200, "Start");
+        const optionsButton = new Button(100, 50, "lightblue", 150, 300, "Options");
+        display.add(startButton);
+        display.add(optionsButton);
+        
+        window.addEventListener("click", function(e) {
+            if (startButton.clicked()) {
+                startButton.clicked();
+            } else if (optionsButton.clicked()) {
+                optionsButton.clicked();
+            }
+        });</code></pre>
+        
+            <h3>Example 5: Implementing a Health Bar</h3>
+            <p>Add a health bar to a component:</p>
+            <pre><code>class HealthComponent extends Component {
+            constructor(width, height, color, x, y, type) {
+                super(width, height, color, x, y, type);
+                this.health = 100;
+            }
+        
+            update(ctx) {
+                super.update(ctx);
+                ctx.fillStyle = "red";
+                ctx.fillRect(this.x, this.y - 10, this.width * (this.health / 100), 5);
+            }
+        }
+        
+        const healthComponent = new HealthComponent(50, 50, "blue", 200, 200, "rectangle");
+        display.add(healthComponent);
+        
+        function update() {
+            healthComponent.health -= 0.1; // Decrease health over time
+        }
+        
+        display.update = update;</code></pre>
+        
+            <h3>Example 6: Creating a Multiplayer Game</h3>
+            <p>Implement basic multiplayer functionality using WebSockets:</p>
+            <pre><code>const socket = new WebSocket("ws://yourserver.com");
+        
+        socket.onopen = function() {
+            console.log("Connected to server");
+        };
+        
+        socket.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            // Update game state based on received data
+        };
+        
+        function sendUpdate() {
+            const data = {
+                x: component.x,
+                y: component.y
+            };
+            socket.send(JSON.stringify(data));
+        }
+        
+        function update() {
+            // Update game logic
+            sendUpdate();
+        }
+        
+        display.update = update;</code></pre>
+        
+            <h3>Example 7: Creating a Level Editor</h3>
+            <p>Build a simple level editor to design game levels:</p>
+            <pre><code>class LevelEditor {
+            constructor() {
+                this.tiles = [];
+            }
+        
+            addTile(x, y) {
+                const tile = new Component(tileSize, tileSize, "gray", x, y, "rectangle");
+                this.tiles.push(tile);
+                display.add(tile);
+            }
+        
+            saveLevel() {
+                const levelData = this.tiles.map(tile => ({ x: tile.x, y: tile.y }));
+                localStorage.setItem("level", JSON.stringify(levelData));
+            }
+        
+            loadLevel() {
+                const levelData = JSON.parse(localStorage.getItem("level"));
+                if (levelData) {
+                    levelData.forEach(data => this.addTile(data.x, data.y));
+                }
+            }
+        }
+        
+        const levelEditor = new LevelEditor();
+        levelEditor.loadLevel();
+        
+        window.addEventListener("click", function(e) {
+            const x = Math.floor(e.pageX / tileSize) * tileSize;
+            const y = Math.floor(e.pageY / tileSize) * tileSize;
+            levelEditor.addTile(x, y);
+        });
+        
+        document.getElementById("saveButton").addEventListener("click", function() {
+            levelEditor.saveLevel();
+        });</code></pre>
+        </section>
+        <section id="game-examples">
+            <h2>6. Game Examples</h2>
+            <p>This section provides examples of classic games implemented using JGame.js.</p>
+        
+            <h3>Example 1: Dino Game</h3>
+            <p>Recreate the classic Dino Game where the player controls a dinosaur that jumps over obstacles:</p>
+            <pre><code>class Dino extends Component {
+            constructor(width, height, color, x, y) {
+                super(width, height, color, x, y, "rectangle");
+                this.gravity = 0.5;
+                this.gravitySpeed = 0;
+                this.jumpPower = -10;
+            }
+        
+            jump() {
+                this.gravitySpeed = this.jumpPower;
+            }
+        
+            update(ctx) {
+                this.gravitySpeed += this.gravity;
+                this.y += this.gravitySpeed;
+                if (this.y > display.canvas.height - this.height) {
+                    this.y = display.canvas.height - this.height;
+                    this.gravitySpeed = 0;
+                }
+                super.update(ctx);
+            }
+        }
+        
+        class Obstacle extends Component {
+            constructor(width, height, color, x, y) {
+                super(width, height, color, x, y, "rectangle");
+                this.speedX = -5;
+            }
+        
+            update(ctx) {
+                this.x += this.speedX;
+                if (this.x < 0) {
+                    this.x = display.canvas.width;
+                }
+                super.update(ctx);
+            }
+        }
+        
+        const dino = new Dino(50, 50, "green", 50, display.canvas.height - 50);
+        const obstacles = [new Obstacle(20, 50, "red", 300, display.canvas.height - 50)];
+        
+        display.add(dino);
+        obstacles.forEach(obstacle => display.add(obstacle));
+        
+        window.addEventListener("keydown", function(e) {
+            if (e.key === " ") {
+                dino.jump();
+            }
+        });
+        
+        function update() {
+            obstacles.forEach(obstacle => {
+                if (move.checkCollision(dino, obstacle)) {
+                    alert("Game Over!");
+                    window.location.reload();
+                }
+            });
+        }
+        
+        display.update = update;</code></pre>
+        
+            <h3>Example 2: Snake Game</h3>
+            <p>Implement the classic Snake Game where the player controls a snake that grows longer as it eats food:</p>
+            <pre><code>class Snake {
+            constructor() {
+                this.body = [{ x: 10, y: 10 }];
+                this.direction = "right";
+                this.food = this.generateFood();
+            }
+        
+            generateFood() {
+                return { x: Math.floor(Math.random() * 20), y: Math.floor(Math.random() * 20) };
+            }
+        
+            move() {
+                const head = { ...this.body[0] };
+                switch (this.direction) {
+                    case "right":
+                        head.x += 1;
+                        break;
+                    case "left":
+                        head.x -= 1;
+                        break;
+                    case "up":
+                        head.y -= 1;
+                        break;
+                    case "down":
+                        head.y += 1;
+                        break;
+                }
+                this.body.unshift(head);
+                if (head.x === this.food.x && head.y === this.food.y) {
+                    this.food = this.generateFood();
+                } else {
+                    this.body.pop();
+                }
+            }
+        
+            changeDirection(newDirection) {
+                this.direction = newDirection;
+            }
+        
+            checkCollision() {
+                const head = this.body[0];
+                for (let i = 1; i < this.body.length; i++) {
+                    if (head.x === this.body[i].x && head.y === this.body[i].y) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        
+            draw(ctx) {
+                ctx.fillStyle = "green";
+                this.body.forEach(segment => {
+                    ctx.fillRect(segment.x * 20, segment.y * 20, 20, 20);
+                });
+                ctx.fillStyle = "red";
+                ctx.fillRect(this.food.x * 20, this.food.y * 20, 20, 20);
+            }
+        }
+        
+        const snake = new Snake();
+        
+        window.addEventListener("keydown", function(e) {
+            switch (e.key) {
+                case "ArrowUp":
+                    snake.changeDirection("up");
+                    break;
+                case "ArrowDown":
+                    snake.changeDirection("down");
+                    break;
+                case "ArrowLeft":
+                    snake.changeDirection("left");
+                    break;
+                case "ArrowRight":
+                    snake.changeDirection("right");
+                    break;
+            }
+        });
+        
+        function update() {
+            snake.move();
+            if (snake.checkCollision()) {
+                alert("Game Over!");
+                window.location.reload();
+            }
+        }
+        
+        function draw() {
+            display.clear();
+            snake.draw(display.context);
+        }
+        
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+        
+        gameLoop();</code></pre>
+        
+            <h3>Example 3: Tic-Tac-Toe</h3>
+            <p>Create a simple Tic-Tac-Toe game where two players take turns marking X and O on a 3x3 grid:</p>
+            <pre><code>class TicTacToe {
+            constructor() {
+                this.board = [
+                    ["", "", ""],
+                    ["", "", ""],
+                    ["", "", ""]
+                ];
+                this.currentPlayer = "X";
+            }
+        
+            makeMove(x, y) {
+                if (this.board[y][x] === "") {
+                    this.board[y][x] = this.currentPlayer;
+                    this.currentPlayer = this.currentPlayer === "X" ? "O" : "X";
+                }
+            }
+        
+            checkWinner() {
+                const winningCombinations = [
+                    [[0, 0], [0, 1], [0, 2]],
+                    [[1, 0], [1, 1], [1, 2]],
+                    [[2, 0], [2, 1], [2, 2]],
+                    [[0, 0], [1, 0], [2, 0]],
+                    [[0, 1], [1, 1], [2, 1]],
+                    [[0, 2], [1, 2], [2, 2]],
+                    [[0, 0], [1, 1], [2, 2]],
+                    [[0, 2], [1, 1], [2, 0]]
+                ];
+        
+                for (let combination of winningCombinations) {
+                    const [a, b, c] = combination;
+                    if (this.board[a[1]][a[0]] && this.board[a[1]][a[0]] === this.board[b[1]][b[0]] && this.board[a[1]][a[0]] === this.board[c[1]][c[0]]) {
+                        return this.board[a[1]][a[0]];
+                    }
+                }
+        
+                return null;
+            }
+        
+            draw(ctx) {
+                ctx.clearRect(0, 0, display.canvas.width, display.canvas.height);
+                ctx.strokeStyle = "black";
+                ctx.lineWidth = 2;
+        
+                for (let i = 1; i < 3; i++) {
+                    ctx.beginPath();
+                    ctx.moveTo(i * 100, 0);
+                    ctx.lineTo(i * 100, 300);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(0, i * 100);
+                    ctx.lineTo(300, i * 100);
+                    ctx.stroke();
+                }
+        
+                for (let y = 0; y < 3; y++) {
+                    for (let x = 0; x < 3; x++) {
+                        if (this.board[y][x]) {
+                            ctx.font = "80px Arial";
+                            ctx.fillText(this.board[y][x], x * 100 + 20, y * 100 + 80);
+                        }
+                    }
+                }
+            }
+        }
+        
+        const ticTacToe = new TicTacToe();
+        
+        display.canvas.addEventListener("click", function(e) {
+            const x = Math.floor(e.offsetX / 100);
+            const y = Math.floor(e.offsetY / 100);
+            ticTacToe.makeMove(x, y);
+            const winner = ticTacToe.checkWinner();
+            if (winner) {
+                alert(winner + " wins!");
+                window.location.reload();
+            }
+        });
+        
+        function gameLoop() {
+            ticTacToe.draw(display.context);
+            requestAnimationFrame(gameLoop);
+        }
+        
+        gameLoop();</code></pre>
+        </section>
+        
+        <section id="faq">
+            <h2>5. FAQ</h2>
+            <h3>Q: How do I add a new component to the display?</h3>
+            <p>A: Use the <code>display.add(component)</code> method to add a new component.</p>
+
+            <h3>Q: How do I play a sound?</h3>
+            <p>A: Create a new <code>Sound</code> object and call the <code>play()</code> method.</p>
+
+            <h3>Q: How do I make a component move in a circular path?</h3>
+            <p>A: Use the <code>move.circle(id, speed)</code> method to move the component in a circular path.</p>
+
+            <h3>Q: How do I check for collisions between components?</h3>
+            <p>A: Use the <code>move.checkCollision(id1, id2)</code> method to check for collisions between two components.</p>
+
+            <h3>Q: How do I animate a sprite?</h3>
+            <p>A: Create a <code>Sprite</code> object and use the <code>update()</code> and <code>draw(ctx, x, y)</code> methods to animate it.</p>
+        </section>
+    </div>
+</body>
+</html>
