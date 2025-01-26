@@ -474,15 +474,32 @@ display.add(stampedComponent);</code></pre>
                 </li>
             </ul>
         </li>
-        <li>
-            <code>hitObject(id, otherid)</code>: Checks if the component hits another object.
+       <li>
+    <code>hitObject(id, otherid)</code>: Checks if the component hits another object.
+    <ul>
+        <li><b>Parameters:</b>
             <ul>
-                <li><b>Parameters:</b>
-                    <ul>
-                        <li><code>id</code> (Component): The component to check for collision.</li>
-                        <li><code>otherid</code> (Component): The other component to check collision with.</li>
-                    </ul>
-                </li>
+                <li><code>id</code> (Component): The component to check for collision.</li>
+                <li><code>otherid</code> (Component): The other component to check collision with.</li>
+            </ul>
+        </li>
+        <li><b>Example:</b>
+            <pre><code>// Create two components
+const component1 = new Component(50, 50, "blue", 100, 100, "rectangle");
+const component2 = new Component(50, 50, "green", 150, 150, "rectangle");
+
+// Add components to the display
+display.add(component1);
+display.add(component2);
+
+// Check if the components collide
+if (move.hitObject(component1, component2)) {
+    console.log("Collision detected!");
+}
+</code></pre>
+        </li>
+    </ul>
+</li>
                 <li><b>Example:</b>
                     <h3>Move Object</h3>
 <p>The <code>Move</code> object contains various movement and transformation methods.</p>
