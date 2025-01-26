@@ -11,6 +11,7 @@ body {
 
 .container {
     margin-top: 30px;
+    padding: 0 15px;
 }
 
 header {
@@ -32,6 +33,7 @@ header ul {
     list-style: none;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 header li {
@@ -41,6 +43,7 @@ header li {
 header #branding h1 {
     margin: 0;
     font-weight: 300;
+    text-align: center;
 }
 
 header nav {
@@ -80,4 +83,45 @@ pre {
 
 .btn-primary:hover {
     background-color: #0056b3;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    header ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header li {
+        padding: 10px 0;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0;
+    }
+
+    header nav {
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    header #branding h1 {
+        font-size: 1.5rem;
+    }
+
+    header a {
+        font-size: 14px;
+    }
+
+    section {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    pre {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
 }
