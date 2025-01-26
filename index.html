@@ -43,81 +43,828 @@
 &lt;script src="/jgme/jgame_more.js"&gt;&lt;/script&gt;</code></pre>
         </section>
 
-        <section id="classes-and-methods">
-            <h2>3. Classes and Methods</h2>
-            <h3>Display Class</h3>
-            <p>The <code>Display</code> class is responsible for creating and managing the game canvas.</p>
-            <h4>Methods:</h4>
+       <section id="classes-and-methods">
+    <h2>4. Classes and Methods</h2>
+    
+    <h3>Display Class</h3>
+    <p>The <code>Display</code> class is responsible for creating and managing the game canvas.</p>
+    <h4>Properties:</h4>
+    <ul>
+        <li><code>canvas</code>: The canvas element used for rendering the game.</li>
+        <li><code>context</code>: The 2D rendering context of the canvas.</li>
+        <li><code>frameNo</code>: The frame counter.</li>
+        <li><code>keys</code>: Array to store the state of keys.</li>
+        <li><code>x</code> and <code>y</code>: Coordinates for mouse/touch input.</li>
+        <li><code>interval</code>: The interval for the game loop.</li>
+    </ul>
+    <h4>Methods:</h4>
+    <ul>
+        <li>
+            <code>start(width, height)</code>: Initializes the canvas with the specified width and height.
             <ul>
-                <li><code>start(width, height)</code>: Initializes the canvas with the specified width and height.</li>
-                <li><code>addEventListeners()</code>: Adds event listeners for keyboard and mouse input.</li>
-                <li><code>clear()</code>: Clears the canvas.</li>
-                <li><code>borderStyle(borderStyle)</code>: Sets the canvas border style.</li>
-                <li><code>stop()</code>: Stops the game loop.</li>
-                <li><code>borderSize(borderSize)</code>: Sets the canvas border size.</li>
-                <li><code>backgroundColor(color)</code>: Sets the canvas background color.</li>
-                <li><code>borderColor(color)</code>: Sets the canvas border color.</li>
-                <li><code>fontColor(color)</code>: Sets the canvas font color.</li>
-                <li><code>scale(width, height)</code>: Scales the canvas dimensions.</li>
-                <li><code>add(component)</code>: Adds a component to the display.</li>
-                <li><code>update()</code>: Updates the display and components.</li>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>width</code> (number): The width of the canvas.</li>
+                        <li><code>height</code> (number): The height of the canvas.</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>const display = new Display();
+display.start(800, 600);</code></pre>
+                </li>
             </ul>
+        </li>
+        <li>
+            <code>addEventListeners()</code>: Adds event listeners for keyboard and mouse input.
+            <ul>
+                <li><b>Example:</b>
+                    <pre><code>display.addEventListeners();</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>clear()</code>: Clears the canvas.
+            <ul>
+                <li><b>Example:</b>
+                    <pre><code>display.clear();</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>borderStyle(borderStyle)</code>: Sets the canvas border style.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>borderStyle</code> (string): The CSS border style (e.g., "solid", "dashed").</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>display.borderStyle("solid");</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>stop()</code>: Stops the game loop.
+            <ul>
+                <li><b>Example:</b>
+                    <pre><code>display.stop();</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>borderSize(borderSize)</code>: Sets the canvas border size.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>borderSize</code> (string): The CSS border size (e.g., "2px").</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>display.borderSize("2px");</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>backgroundColor(color)</code>: Sets the canvas background color.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>color</code> (string): The CSS color value (e.g., "lightblue").</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>display.backgroundColor("lightblue");</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>borderColor(color)</code>: Sets the canvas border color.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>color</code> (string): The CSS color value (e.g., "black").</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>display.borderColor("black");</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>fontColor(color)</code>: Sets the canvas font color.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>color</code> (string): The CSS color value (e.g., "red").</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>display.fontColor("red");</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>scale(width, height)</code>: Scales the canvas dimensions.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>width</code> (number): The new width of the canvas.</li>
+                        <li><code>height</code> (number): The new height of the canvas.</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>display.scale(1024, 768);</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>add(component)</code>: Adds a component to the display.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>component</code> (Component): The component to add.</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>const component = new Component(50, 50, "red", 100, 100, "rectangle");
+display.add(component);</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>update()</code>: Updates the display and components.
+            <ul>
+                <li><b>Example:</b>
+                    <pre><code>function update() {
+    display.clear();
+    // Update components here
+    display.frameNo += 1;
+}
+display.update = update;</code></pre>
+                </li>
+            </ul>
+        </li>
+    </ul>
 
-            <h3>Component Class</h3>
-            <p>The <code>Component</code> class represents game objects.</p>
-            <h4>Methods:</h4>
+    <h3>Component Class</h3>
+    <p>The <code>Component</code> class represents game objects.</p>
+    <h4>Properties:</h4>
+    <ul>
+        <li><code>width</code>: The width of the component.</li>
+        <li><code>height</code>: The height of the component.</li>
+        <li><code>color</code>: The color or image source of the component.</li>
+        <li><code>type</code>: The type of the component (e.g., "image", "text").</li>
+        <li><code>angle</code>: The rotation angle of the component.</li>
+        <li><code>x</code> and <code>y</code>: The coordinates of the component.</li>
+        <li><code>speedX</code> and <code>speedY</code>: The speed of the component.</li>
+        <li><code>gravity</code>: The gravity effect on the component.</li>
+        <li><code>gravitySpeed</code>: The gravity speed of the component.</li>
+        <li><code>bounce</code>: The bounce effect of the component.</li>
+        <li><code>physics</code>: Flag indicating if physics is enabled.</li>
+        <li><code>changeAngle</code>: Flag indicating if rotation is enabled.</li>
+        <li><code>image</code>: The image object for image components.</li>
+        <li><code>text</code>: The text content for text components.</li>
+    </ul>
+    <h4>Methods:</h4>
+    <ul>
+        <li>
+            <code>update(ctx)</code>: Updates the component's appearance.
             <ul>
-                <li><code>update(ctx)</code>: Updates the component's appearance.</li>
-                <li><code>move()</code>: Moves the component based on its speed and physics.</li>
-                <li><code>hitBottom()</code>: Checks if the component hits the bottom of the canvas.</li>
-                <li><code>stopMove()</code>: Stops the component's movement.</li>
-                <li><code>clicked()</code>: Checks if the component is clicked.</li>
-                <li><code>crashWith(otherobj)</code>: Checks if the component crashes with another object.</li>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>ctx</code> (CanvasRenderingContext2D): The 2D rendering context of the canvas.</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>component.update(display.context);</code></pre>
+                </li>
             </ul>
+        </li>
+        <li>
+            <code>move()</code>: Moves the component based on its speed and physics.
+            <ul>
+                <li><b>Example:</b>
+                    <pre><code>component.move();</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>hitBottom()</code>: Checks if the component hits the bottom of the canvas.
+            <ul>
+                <li><b>Example:</b>
+                    <pre><code>component.hitBottom();</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>stopMove()</code>: Stops the component's movement.
+            <ul>
+                <li><b>Example:</b>
+                    <pre><code>component.stopMove();</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>clicked()</code>: Checks if the component is clicked.
+            <ul>
+                <li><b>Example:</b>
+                    <pre><code>if (component.clicked()) {
+    console.log("Component clicked!");
+}</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>crashWith(otherobj)</code>: Checks if the component crashes with another object.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>otherobj</code> (Component): The other component to check collision with.</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>if (component.crashWith(otherComponent)) {
+    console.log("Collision detected!");
+}</code></pre>
+                </li>
+            </ul>
+        </li>
+    </ul>
 
-            <h3>Sound Class</h3>
-            <p>The <code>Sound</code> class handles audio playback.</p>
-            <h4>Methods:</h4>
+    <h3>Sound Class</h3>
+    <p>The <code>Sound</code> class handles audio playback.</p>
+    <h4>Properties:</h4>
+    <ul>
+        <li><code>sound</code>: The audio element used for playback.</li>
+    </ul>
+    <h4>Methods:</h4>
+    <ul>
+        <li>
+            <code>play()</code>: Plays the sound.
             <ul>
-                <li><code>play()</code>: Plays the sound.</li>
-                <li><code>stop()</code>: Stops the sound.</li>
+                <li><b>Example:</b>
+                    <pre><code>const sound = new Sound("path/to/sound.mp3");
+sound.play();</code></pre>
+                </li>
             </ul>
+        </li>
+        <li>
+            <code>stop()</code>: Stops the sound.
+            <ul>
+                <li><b>Example:</b>
+                    <pre><code>sound.stop();</code></pre>
+                </li>
+            </ul>
+        </li>
+    </ul>
 
-            <h3>Move Class</h3>
-            <p>The <code>Move</code> class contains various movement and transformation methods.</p>
-            <h4>Methods:</h4>
+    <h3>Move Object</h3>
+    <p>The <code>Move</code> object contains various movement and transformation methods.</p>
+    <h4>Methods:</h4>
+    <ul>
+        <li>
+            <code>backward(id, steps)</code>: Moves the component backward.
             <ul>
-                <li><code>backward(id, steps)</code>: Moves the component backward.</li>
-                <li><code>teleport(id, x, y)</code>: Teleports the component to the specified coordinates.</li>
-                <li><code>setX(id, x)</code>: Sets the component's x-coordinate.</li>
-                <li><code>setY(id, y)</code>: Sets the component's y-coordinate.</li>
-                <li><code>stamp(id)</code>: Creates a stamped copy of the component.</li>
-                <li><code>circle(id, speed)</code>: Moves the component in a circular path.</li>
-                <li><code>dot(id)</code>: Draws a dot at the component's position.</li>
-                <li><code>clearStamp(id)</code>: Clears the stamped component.</li>
-                <li><code>turnLeft(id, steps)</code>: Rotates the component to the left.</li>
-                <li><code>turnRight(id, steps)</code>: Rotates the component to the right.</li>
-                <li><code>bound(id)</code>: Keeps the component within the canvas bounds.</li>
-                <li><code>hitObject(id, otherid)</code>: Checks if the component hits another object.</li>
-                <li><code>glideX(id, t, x)</code>: Glides the component horizontally.</li>
-                <li><code>glideY(id, t, y)</code>: Glides the component vertically.</li>
-                <li><code>glideTo(id, t, x, y)</code>: Glides the component to the specified coordinates.</li>
-                <li><code>project(id, initialVelocity, angle, gravity)</code>: Projects the component into the air.</li>
-                <li><code>pointTo(id, targetX, targetY)</code>: Points the component towards the specified coordinates.</li>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>id</code> (Component): The component to move.</li>
+                        <li><code>steps</code> (number): The number of steps to move backward.</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>move.backward(component, 5);</code></pre>
+                </li>
             </ul>
+        </li>
+        <li>
+            <code>teleport(id, x, y)</code>: Teleports the component to the specified coordinates.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>id</code> (Component): The component to teleport.</li>
+                        <li><code>x</code> (number): The x-coordinate to teleport to.</li>
+                        <li><code>y</code> (number): The y-coordinate to teleport to.</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>move.teleport(component, 100, 100);</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>setX(id, x)</code>: Sets the component's x-coordinate.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>id</code> (Component): The component to set the x-coordinate for.</li>
+                        <li><code>x</code> (number): The x-coordinate to set.</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>move.setX(component, 200);</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>setY(id, y)</code>: Sets the component's y-coordinate.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>id</code> (Component): The component to set the y-coordinate for.</li>
+                        <li><code>y</code> (number): The y-coordinate to set.</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>move.setY(component, 150);</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>stamp(id)</code>: Creates a stamped copy of the component.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>id</code> (Component): The component to stamp.</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>const stampedComponent = move.stamp(component);
+display.add(stampedComponent);</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>circle(id, speed)</code>: Moves the component in a circular path.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>id</code> (Component): The component to move.</li>
+                        <li><code>speed</code> (number): The speed of the circular movement.</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>move.circle(component, 5);</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>dot(id)</code>: Draws a dot at the component's position.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>id</code> (Component): The component to draw a dot for.</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>move.dot(component);</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>clearStamp(id)</code>: Clears the stamped component.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>id</code> (Component): The component to clear the stamp for.</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>move.clearStamp(component);</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>turnLeft(id, steps)</code>: Rotates the component to the left.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>id</code> (Component): The component to rotate.</li>
+                        <li><code>steps</code> (number): The number of steps to rotate left.</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>move.turnLeft(component, 5);</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>turnRight(id, steps)</code>: Rotates the component to the right.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>id</code> (Component): The component to rotate.</li>
+                        <li><code>steps</code> (number): The number of steps to rotate right.</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>move.turnRight(component, 5);</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>bound(id)</code>: Keeps the component within the canvas bounds.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>id</code> (Component): The component to bound.</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <pre><code>move.bound(component);</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>hitObject(id, otherid)</code>: Checks if the component hits another object.
+            <ul>
+                <li><b>Parameters:</b>
+                    <ul>
+                        <li><code>id</code> (Component): The component to check for collision.</li>
+                        <li><code>otherid</code> (Component): The other component to check collision with.</li>
+                    </ul>
+                </li>
+                <li><b>Example:</b>
+                    <h3>Move Object</h3>
+<p>The <code>Move</code> object contains various movement and transformation methods.</p>
+<h4>Methods:</h4>
+<ul>
+    <li>
+        <code>backward(id, steps)</code>: Moves the component backward.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to move.</li>
+                    <li><code>steps</code> (number): The number of steps to move backward.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>move.backward(component, 5);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>teleport(id, x, y)</code>: Teleports the component to the specified coordinates.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to teleport.</li>
+                    <li><code>x</code> (number): The x-coordinate to teleport to.</li>
+                    <li><code>y</code> (number): The y-coordinate to teleport to.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>move.teleport(component, 100, 100);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>setX(id, x)</code>: Sets the component's x-coordinate.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to set the x-coordinate for.</li>
+                    <li><code>x</code> (number): The x-coordinate to set.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>move.setX(component, 200);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>setY(id, y)</code>: Sets the component's y-coordinate.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to set the y-coordinate for.</li>
+                    <li><code>y</code> (number): The y-coordinate to set.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>move.setY(component, 150);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>stamp(id)</code>: Creates a stamped copy of the component.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to stamp.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>const stampedComponent = move.stamp(component);
+display.add(stampedComponent);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>circle(id, speed)</code>: Moves the component in a circular path.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to move.</li>
+                    <li><code>speed</code> (number): The speed of the circular movement.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>move.circle(component, 5);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>dot(id)</code>: Draws a dot at the component's position.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to draw a dot for.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>move.dot(component);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>clearStamp(id)</code>: Clears the stamped component.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to clear the stamp for.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>move.clearStamp(component);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>turnLeft(id, steps)</code>: Rotates the component to the left.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to rotate.</li>
+                    <li><code>steps</code> (number): The number of steps to rotate left.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>move.turnLeft(component, 5);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>turnRight(id, steps)</code>: Rotates the component to the right.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to rotate.</li>
+                    <li><code>steps</code> (number): The number of steps to rotate right.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>move.turnRight(component, 5);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>bound(id)</code>: Keeps the component within the canvas bounds.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to bound.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>move.bound(component);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>hitObject(id, otherid)</code>: Checks if the component hits another object.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to check for collision.</li>
+                    <li><code>otherid</code> (Component): The other component to check collision with.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>if (move.hitObject(component, otherComponent)) {
+    console.log("Collision detected!");
+}</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>glideX(id, t, x)</code>: Glides the component horizontally.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to glide.</li>
+                    <li><code>t</code> (number): The time duration for the glide.</li>
+                    <li><code>x</code> (number): The x-coordinate to glide to.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>move.glideX(component, 3, 400);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>glideY(id, t, y)</code>: Glides the component vertically.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to glide.</li>
+                    <li><code>t</code> (number): The time duration for the glide.</li>
+                    <li><code>y</code> (number): The y-coordinate to glide to.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>move.glideY(component, 3, 300);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>glideTo(id, t, x, y)</code>: Glides the component to the specified coordinates.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to glide.</li>
+                    <li><code>t</code> (number): The time duration for the glide.</li>
+                    <li><code>x</code> (number): The x-coordinate to glide to.</li>
+                    <li><code>y</code> (number): The y-coordinate to glide to.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>move.glideTo(component, 3, 400, 300);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>project(id, initialVelocity, angle, gravity)</code>: Projects the component into the air.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to project.</li>
+                    <li><code>initialVelocity</code> (number): The initial velocity of the projection.</li>
+                    <li><code>angle</code> (number): The angle of the projection in degrees.</li>
+                    <li><code>gravity</code> (number): The gravity effect on the projection.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>move.project(component, 10, 45, 0.5);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>pointTo(id, targetX, targetY)</code>: Points the component towards the specified coordinates.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to point.</li>
+                    <li><code>targetX</code> (number): The x-coordinate to point to.</li>
+                    <li><code>targetY</code> (number): The y-coordinate to point to.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>move.pointTo(component, 200, 300);</code></pre>
+            </li>
+        </ul>
+    </li>
+</ul>
 
-            <h3>State Class</h3>
-            <p>The <code>State</code> class contains methods for retrieving the state of components.</p>
-            <h4>Methods:</h4>
-            <ul>
-                <li><code>distance(id, otherid)</code>: Calculates the distance between two components.</li>
-                <li><code>rect(id)</code>: Returns the component's rectangle (x, y, width, height).</li>
-                <li><code>physics(id)</code>: Returns whether the component has physics enabled.</li>
-                <li><code>changeAngle(id)</code>: Returns whether the component's angle changes.</li>
-                <li><code>angle(id)</code>: Returns the component's angle.</li>
-                <li><code>pos(id)</code>: Returns the component's position as a string.</li>
-            </ul>
-        </section>
+<h3>State Object</h3>
+<p>The <code>State</code> object contains methods for retrieving the state of components.</p>
+<h4>Methods:</h4>
+<ul>
+    <li>
+        <code>distance(id, otherid)</code>: Calculates the distance between two components.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The first component.</li>
+                    <li><code>otherid</code> (Component): The second component.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>const dist = state.distance(component1, component2);
+console.log("Distance:", dist);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>rect(id)</code>: Returns the component's rectangle (x, y, width, height).
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to get the rectangle for.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>const rect = state.rect(component);
+console.log("Rectangle:", rect);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>physics(id)</code>: Returns whether the component has physics enabled.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to check.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>const hasPhysics = state.physics(component);
+console.log("Physics enabled:", hasPhysics);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>changeAngle(id)</code>: Returns whether the component's angle changes.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to check.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>const angleChanges = state.changeAngle(component);
+console.log("Angle changes:", angleChanges);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>angle(id)</code>: Returns the component's angle.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to get the angle for.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>const angle = state.angle(component);
+console.log("Angle:", angle);</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>pos(id)</code>: Returns the component's position as a string.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>id</code> (Component): The component to get the position for.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>const pos = state.pos(component);
+console.log("Position:", pos);</code></pre>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<h3>Sprite Class</h3>
+<p>The <code>Sprite</code> class handles animated sprites, allowing for frame-based animation.</p>
+<h4>Properties:</h4>
+<ul>
+    <li><code>image</code>: The image object used for the sprite.</li>
+    <li><code>frameWidth</code>: The width of each frame in the sprite sheet.</li>
+    <li><code>frameHeight</code>: The height of each frame in the sprite sheet.</li>
+    <li><code>frameCount</code>: The total number of frames in the sprite sheet.</li>
+    <li><code>frameSpeed</code>: The speed at which the frames are updated.</li>
+    <li><code>currentFrame</code>: The current frame being displayed.</li>
+    <li><code>frameTimer</code>: A timer to control frame updates.</li>
+</ul>
+<h4>Methods:</h4>
+<ul>
+    <li>
+        <code>update()</code>: Updates the current frame based on the frame speed.
+        <ul>
+            <li><b>Example:</b>
+                <pre><code>sprite.update();</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>draw(ctx, x, y)</code>: Draws the current frame of the sprite at the specified coordinates.
+        <ul>
+            <li><b>Parameters:</b>
+                <ul>
+                    <li><code>ctx</code> (CanvasRenderingContext2D): The 2D rendering context of the canvas.</li>
+                    <li><code>x</code> (number): The x-coordinate to draw the sprite at.</li>
+                    <li><code>y</code> (number): The y-coordinate to draw the sprite at.</li>
+                </ul>
+            </li>
+            <li><b>Example:</b>
+                <pre><code>sprite.draw(display.context, 100, 100);</code></pre>
+            </li>
+        </ul>
+    </li>
+</ul>
+</section>
 
         <section id="examples">
             <h2>4. Examples</h2>
